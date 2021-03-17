@@ -4,12 +4,12 @@
 
     // How each item in config.data is rendered depends on the function
     // assigned to config.createItemComponent. paginate() is currently still dependent
-    // on a few bootstrap classes, but overall paginate is portable/reusable.
+    // on a few bootstrap classes, but overall paginate is reusable.
     function makePageChild(item){
       const li           = document.createElement('LI');
       const strong       = document.createElement('STRONG');
       const span         = document.createElement('SPAN');
-      li.className       = 'list-group-item';
+      li.className       = 'list-group-item text-secondary';
       strong.className   = 'me-5';
       strong.textContent = item.id;
       span.textContent   = item.title;
@@ -23,7 +23,7 @@
       pageContainer:       document.querySelector('#blog-post-list'),
       paginationContainer: document.querySelector('#blog-post-pagination'),
       createItemComponent: makePageChild
-      //itemsPerPage:        5
+      // ,itemsPerPage:       7
     };
 
     paginate(config);

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:900&display=swap');
 
+
 html {
   /* Safari needs this to prevent horizontal scrolling. */
   max-width: 100%;
@@ -45,18 +46,6 @@ pre {
   border: 2px solid #333;
   border-radius: 15px;
   overflow:scroll;
-}
-
-.article {
-  min-height: 300px;
-  margin: 0 auto 50px auto;
-  padding: 25px;
-  color: rgb(125,125,125);
-  color: #333;
-	background-color: rgb(245,245,245);
-  border: 2px solid rgb(150,150,150);
-  border-radius: 25px;
-  box-shadow: 0px 3px 6px rgba(0,0,0,0.25);
 }
 
 .text-white-3d {
@@ -274,7 +263,13 @@ pre {
 
 .page-link:focus { box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5); }
 
-.page-item .page-link { color: #6c757d; }
+.page-item .page-link {
+  min-height: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 38px; /* Not 40px because of borders. */
+  color: #6c757d;
+}
 
 .page-item.active .page-link {
   color: #FFF;
@@ -284,6 +279,18 @@ pre {
 }
 
 #blog-post-list { max-width: 700px; }
+
+.prev-page-link:hover, .next-page-link:hover {
+  background-color: transparent;
+}
+
+.prev-page-link:focus, .next-page-link:focus {
+  color: #6c757d;
+  background-color: transparent;
+  box-shadow: none; /* Not super helpful for people who navigate with tab, but the focus cuts out when pagination is rerendered, and it looks bad. */
+  outline: 0;
+  z-index: 3;
+}
 
 
 /* =============================================================================
@@ -299,6 +306,5 @@ pre {
 @media (min-width: 992px) {}
 /* xl */
 @media (min-width: 1200px) {}
-
 /* xxl */
 @media (min-width: 1400px) { main > .container-fluid { max-width: 1400px; }}
