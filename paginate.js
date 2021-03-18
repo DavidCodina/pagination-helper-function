@@ -93,7 +93,7 @@ function paginate(config){
       if (pageNumbers[3]){ pageNumbersSubset.push(pageNumbers[3]); }
       if (pageNumbers[4]){ pageNumbersSubset.push(pageNumbers[4]); }
     }
-    else if (currentPage >= pageNumbers.length-2){ //?
+    else if (currentPage >= pageNumbers.length-2){ 
       if (pageNumbers[pageNumbers.length-5]){ pageNumbersSubset.push(pageNumbers[pageNumbers.length-5]); }
       if (pageNumbers[pageNumbers.length-4]){ pageNumbersSubset.push(pageNumbers[pageNumbers.length-4]); }
       if (pageNumbers[pageNumbers.length-3]){ pageNumbersSubset.push(pageNumbers[pageNumbers.length-3]); }
