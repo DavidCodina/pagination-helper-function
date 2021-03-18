@@ -276,6 +276,10 @@ pre {
 .page-link:focus { box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5); }
 
 .page-item .page-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 35px;
   min-height: 40px;
   padding-top: 0;
   padding-bottom: 0;
@@ -291,19 +295,29 @@ pre {
   z-index: 3;
 }
 
-#blog-post-list { max-width: 700px; }
-
-.prev-page-link:hover, .next-page-link:hover {
+.prev-page-link:hover,
+.next-page-link:hover,
+.first-page-link:hover,
+.last-page-link:hover {
   background-color: transparent;
 }
 
-.prev-page-link:focus, .next-page-link:focus {
+.prev-page-link:focus,
+.next-page-link:focus,
+.first-page-link:focus,
+.last-page-link:focus {
   color: #6c757d;
   background-color: transparent;
   box-shadow: none; /* Not super helpful for people who navigate with tab, but the focus cuts out when pagination is rerendered, and it looks bad. */
   outline: 0;
   z-index: 3;
 }
+
+.prev-page-link, .next-page-link { display: none; }
+@media (min-width: 500px) { .prev-page-link, .next-page-link { display: flex; }}
+
+
+#blog-post-list { max-width: 700px; }
 
 
 /* =============================================================================

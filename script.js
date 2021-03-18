@@ -4,7 +4,7 @@
 
     // How each item in config.data is rendered depends on the function
     // assigned to config.createItemComponent. paginate() is currently still dependent
-    // on a few bootstrap classes, but overall paginate is reusable.
+    // on a few bootstrap classes, but overall paginate is portable/reusable.
     function makePageChild(item){
       const li           = document.createElement('LI');
       const strong       = document.createElement('STRONG');
@@ -23,7 +23,7 @@
       pageContainer:       document.querySelector('#blog-post-list'),
       paginationContainer: document.querySelector('#blog-post-pagination'),
       createItemComponent: makePageChild
-      // ,itemsPerPage:       7
+      // ,itemsPerPage:    7
     };
 
     paginate(config);
