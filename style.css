@@ -48,6 +48,18 @@ pre {
   overflow:scroll;
 }
 
+.article {
+  min-height: 300px;
+  margin: 0 auto 50px auto;
+  padding: 25px;
+  color: rgb(125,125,125);
+  color: #333;
+	background-color: rgb(245,245,245);
+  border: 2px solid rgb(150,150,150);
+  border-radius: 25px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.25);
+}
+
 .text-white-3d {
   margin-bottom: 25px;
   -webkit-text-stroke-width: 1px;
@@ -269,6 +281,7 @@ pre {
   padding-bottom: 0;
   line-height: 38px; /* Not 40px because of borders. */
   color: #6c757d;
+  cursor:pointer;
 }
 
 .page-item.active .page-link {

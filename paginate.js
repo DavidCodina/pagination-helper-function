@@ -62,16 +62,19 @@ function paginate(config){
   function createPageNumbersSubset(){
     const pageNumbersSubset = [];
 
+
     if (currentPage === 1){
       if (pageNumbers[currentPage-1]){ pageNumbersSubset.push(pageNumbers[currentPage-1]);   }
       if (pageNumbers[currentPage]){   pageNumbersSubset.push(pageNumbers[currentPage]);   }
       if (pageNumbers[currentPage+1]){ pageNumbersSubset.push(pageNumbers[currentPage+1]); }
     }
+
     else if (currentPage >= pageNumbers.length-1){
       if (pageNumbers[pageNumbers.length-3]){ pageNumbersSubset.push(pageNumbers[pageNumbers.length-3]); }
       if (pageNumbers[pageNumbers.length-2]){ pageNumbersSubset.push(pageNumbers[pageNumbers.length-2]); }
       if (pageNumbers[pageNumbers.length-1]){ pageNumbersSubset.push(pageNumbers[pageNumbers.length-1]); }
     }
+
     else if (currentPage > 1){
       if (pageNumbers[currentPage-2]){ pageNumbersSubset.push(pageNumbers[currentPage-2]); }
       if (pageNumbers[currentPage-1]){ pageNumbersSubset.push(pageNumbers[currentPage-1]); }
@@ -105,13 +108,15 @@ function paginate(config){
     paginationContainer.innerHTML = '';
     paginationContainer.classList.remove('d-none');
 
-    /* ======= prev ====== */
+    /* ===== prevLink ==== */
 
-    const prev           = document.createElement('LI');
-    prev.className       = 'page-item';
-    const prevLink       = document.createElement('A');
-    prevLink.className   = 'page-link px-1 prev-page-link';
-    prevLink.setAttribute('href', '#pages');
+    const prev         = document.createElement('LI');
+    prev.className     = 'page-item';
+    // No need to use an 'A' if you're not actually paginating to a new URL.*
+    // However, prevLink, pageLink, and nextLink identifiers are still used to be
+    // consistent with Bootstrap's .page-link class.
+    const prevLink     = document.createElement('SPAN'); // *
+    prevLink.className = 'page-link px-1 prev-page-link';
     prevLink.innerHTML = `
       <svg  width="25" height="25" fill="currentColor" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
@@ -131,16 +136,15 @@ function paginate(config){
     prev.appendChild(prevLink);
     paginationContainer.appendChild(prev);
 
-    /* ===== numbers ===== */
+    /* ===== pageLink ==== */
 
     pageNumbersSubset.forEach(n => {
-      const li      = document.createElement('LI');
-      const a       = document.createElement('A');
-      li.className  = (n === currentPage) ? 'page-item active' : 'page-item';
-      a.className   = 'page-link';
-      a.textContent = n;
-      a.setAttribute('href', '#pages');
-      a.addEventListener('click', function(e){
+      const li       = document.createElement('LI');
+      const pageLink = document.createElement('SPAN'); // *
+      li.className   = (n === currentPage) ? 'page-item active' : 'page-item';
+      pageLink.className    = 'page-link';
+      pageLink.textContent  = n;
+      pageLink.addEventListener('click', function(e){
         e.preventDefault();
         currentPage = n;
         setFirstAndLastIndex();
@@ -149,17 +153,16 @@ function paginate(config){
         renderPagination();
       });
 
-      li.appendChild(a);
+      li.appendChild(pageLink);
       paginationContainer.appendChild(li);
     });
 
-    /* ======= next ====== */
+    /* ==== nextLink ===== */
 
-    const next           = document.createElement('LI');
-    next.className       = 'page-item';
-    const nextLink       = document.createElement('A');
-    nextLink.className   = 'page-link px-1 next-page-link';
-    nextLink.setAttribute('href', '#pages');
+    const next         = document.createElement('LI');
+    next.className     = 'page-item';
+    const nextLink     = document.createElement('SPAN'); // *
+    nextLink.className = 'page-link px-1 next-page-link';
     nextLink.innerHTML = `
       <svg width="25" height="25" fill="currentColor" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
